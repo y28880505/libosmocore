@@ -11,16 +11,16 @@ libosmocore_la_SOURCES = timer.c select.c signal.c msgb.c bits.c \
 			 write_queue.c utils.c socket.c \
 			 logging.c logging_syslog.c rate_ctr.c \
 			 gsmtap_util.c crc16.c panic.c backtrace.c \
-			 conv.c application.c rbtree.c \
-			 crc8gen.c crc16gen.c crc32gen.c crc64gen.c
+			 conv.c application.c rbtree.c strrb.c \
+			 loggingrb.c crc8gen.c crc16gen.c crc32gen.c crc64gen.c
 
 BUILT_SOURCES = crc8gen.c crc16gen.c crc32gen.c crc64gen.c
 
 if ENABLE_PLUGIN
 libosmocore_la_SOURCES += plugin.c
-libosmocore_la_LDFLAGS = -version-info $(LIBVERSION) $(LIBRARY_DL)
+libosmocore_la_LDFLAGS = -version-info $(LIBVERSION) $(LIBRARY_DL) -no-undefined
 else
-libosmocore_la_LDFLAGS = -version-info $(LIBVERSION)
+libosmocore_la_LDFLAGS = -version-info $(LIBVERSION) -no-undefined
 endif
 
 if ENABLE_TALLOC

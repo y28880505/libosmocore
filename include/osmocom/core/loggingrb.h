@@ -1,13 +1,12 @@
-/*
- * serial.h
- *
- * Copyright (C) 2011  Sylvain Munaut <tnt@246tNt.com>
- *
+#ifndef _LOGGINGRB_H
+#define _LOGGINGRB_H
+
+/* (C) 2012-2013 by Katerina Barone-Adesi <kat.obsc@gmail.com>
  * All Rights Reserved
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -18,26 +17,24 @@
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
  */
 
-/*! \defgroup serial Utility functions to deal with serial ports
+
+/*! \defgroup loggingrb Osmocom ringbuffer-backed logging
  *  @{
  */
 
-/*! \file serial.h
- * Osmocom serial port helpers
+/*! \file loggingrb.h
  */
 
-#ifndef __OSMO_SERIAL_H__
-#define __OSMO_SERIAL_H__
+struct log_info;
 
-#include <termios.h>
-
-int osmo_serial_init(const char *dev, speed_t baudrate);
-int osmo_serial_set_baudrate(int fd, speed_t baudrate);
-int osmo_serial_set_custom_baudrate(int fd, int baudrate);
-int osmo_serial_clear_custom_baudrate(int fd);
+size_t log_target_rb_used_size(struct log_target const *target);
+size_t log_target_rb_avail_size(struct log_target const *target);
+const char *log_target_rb_get(struct log_target const *target, size_t logindex);
+struct log_target *log_target_create_rb(size_t size);
 
 /*! @} */
 
-#endif /* __OSMO_SERIAL_H__ */
+#endif /* _LOGGINGRB_H  */

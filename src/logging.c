@@ -55,7 +55,7 @@ LLIST_HEAD(osmo_log_target_list);
 #define LOGLEVEL_DEFS	6	/* Number of loglevels.*/
 
 static const struct value_string loglevel_strs[LOGLEVEL_DEFS+1] = {
-	{ 0,		"EVERYTHING" },
+	{ LOGL_DEBUG,	"EVERYTHING" },	/* backwards compatibility */
 	{ LOGL_DEBUG,	"DEBUG" },
 	{ LOGL_INFO,	"INFO" },
 	{ LOGL_NOTICE,	"NOTICE" },
@@ -135,6 +135,9 @@ int log_parse_level(const char *lvl)
 /*! \brief convert a numeric log level into human-readable string */
 const char *log_level_str(unsigned int lvl)
 {
+	/* backwards compatibility */
+	if (lvl == 0)
+		return loglevel_strs[0].str;
 	return get_value_string(loglevel_strs, lvl);
 }
 

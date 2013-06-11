@@ -114,6 +114,7 @@ enum log_target_type {
 	LOG_TGT_TYPE_SYSLOG,	/*!< \brief syslog based logging */
 	LOG_TGT_TYPE_FILE,	/*!< \brief text file logging */
 	LOG_TGT_TYPE_STDERR,	/*!< \brief stderr logging */
+	LOG_TGT_TYPE_STRRB,	/*!< \brief osmo_strrb-backed logging */
 };
 
 /*! \brief structure representing a logging target */
@@ -154,11 +155,15 @@ struct log_target {
 		struct {
 			void *vty;
 		} tgt_vty;
+
+		struct {
+			void *rb;
+		} tgt_rb;
 	};
 
 	/*! \brief call-back function to be called when the logging framework
 	 *	   wants to log somethnig.
-	 *  \param[[in] target logging target
+	 *  \param[in] target logging target
 	 *  \param[in] level log level of currnet message
 	 *  \param[in] string the string that is to be written to the log
 	 */

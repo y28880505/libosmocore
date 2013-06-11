@@ -16,6 +16,7 @@ nobase_include_HEADERS = \
                        osmocom/core/linuxlist.h \
                        osmocom/core/linuxrbtree.h \
                        osmocom/core/logging.h \
+                       osmocom/core/loggingrb.h \
                        osmocom/core/msgb.h \
                        osmocom/core/panic.h \
                        osmocom/core/prim.h \
@@ -25,6 +26,7 @@ nobase_include_HEADERS = \
                        osmocom/core/signal.h \
                        osmocom/core/socket.h \
                        osmocom/core/statistics.h \
+                       osmocom/core/strrb.h \
                        osmocom/core/timer.h \
                        osmocom/core/utils.h \
                        osmocom/core/write_queue.h \
@@ -65,6 +67,7 @@ nobase_include_HEADERS = \
                        osmocom/gsm/protocol/gsm_12_21.h \
                        osmocom/gsm/protocol/gsm_44_318.h \
                        osmocom/gsm/protocol/ipaccess.h \
+                       osmocom/gsm/protocol/smpp34_osmocom.h \
                        osmocom/gsm/rsl.h \
                        osmocom/gsm/rxlev_stat.h \
                        osmocom/gsm/sysinfo.h \
